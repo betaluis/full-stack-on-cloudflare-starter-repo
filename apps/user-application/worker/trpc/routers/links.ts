@@ -18,8 +18,7 @@ export const linksTrpcRoutes = t.router({
             z.object({
                 offset: z.number().optional(),
             }),
-        )
-        .query(async ({ }) => {
+        ).query(async ({ }) => {
             return LINK_LIST;
         }),
     createLink: t.procedure.input(createLinkSchema).mutation(async ({ input, ctx }) => {

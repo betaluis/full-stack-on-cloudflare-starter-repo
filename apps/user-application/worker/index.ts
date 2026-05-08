@@ -6,7 +6,7 @@ import { initDatabase } from '@repo/data-ops/database'
 // Entry point to our request
 export default {
     fetch(request, env, ctx) {
-        initDatabase(env.DB) // Had to add something in wrangler. Not really sure what it was for, but it tied this to cloudlare somehow
+        initDatabase(env.DB) // Had to add something in wrangler. Not really sure what it was for, but it tied this to cloudlare somehow. Had to run pnpm run cf-typegen which appeared to be a wrangler command. will need to learn more about wrangler
         const url = new URL(request.url);
 
         if (url.pathname.startsWith("/trpc")) {
