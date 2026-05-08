@@ -27,6 +27,11 @@ function RouteComponent() {
     const createMutation = useMutation(
         trpc.links.createLink.mutationOptions({
             onSuccess: (linkId) => {
+                if (!linkId) {
+                    console.error('Missing linkId before navigation')
+                    toast.error('Link created reponse was invalid (missing id)')
+                    return;
+                }
                 nav({
                     to: "/app/link/$id",
                     params: {
